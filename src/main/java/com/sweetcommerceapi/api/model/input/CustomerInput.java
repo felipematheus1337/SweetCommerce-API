@@ -1,9 +1,6 @@
 package com.sweetcommerceapi.api.model.input;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +21,7 @@ public class CustomerInput {
     @Size(max = 20)
     private String phone;
 
-    @NotEmpty
+
+    @Positive
     private Integer age;
 }
