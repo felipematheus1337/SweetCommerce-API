@@ -18,7 +18,7 @@ public class CustomerServiceImpl  implements CustomerService {
     @Override
     @Transactional
     public Customer search(Long customerId) {
-        return repository.findById(customerId).orElseThrow(() -> new BusinessException("Customer not found!"));
+        return repository.findById(customerId).orElse(null);
     }
 
     @Override
