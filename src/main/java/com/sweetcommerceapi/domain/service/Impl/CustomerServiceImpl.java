@@ -1,8 +1,10 @@
 package com.sweetcommerceapi.domain.service.Impl;
 
+import com.sweetcommerceapi.domain.exception.BusinessException;
 import com.sweetcommerceapi.domain.model.Customer;
 import com.sweetcommerceapi.domain.repository.CustomerRepository;
 import com.sweetcommerceapi.domain.service.CustomerService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +16,29 @@ public class CustomerServiceImpl  implements CustomerService {
 
 
     @Override
+    @Transactional
     public Customer search(Long customerId) {
-        return null;
+        return repository.findById(customerId).orElseThrow(() -> new BusinessException("Customer not found!"));
     }
 
     @Override
+    @Transactional
     public Customer save(Customer customer) {
-        return null;
+      boolean isEmailAlreadyUsed = repository.findByEmail(customer.getEmail())
+              .isPresent();
+
+      if(isEmailAlreadyUsed) {
+          throw new BusinessException("E-mail already in use!");
+      }
+      return repository.save(customer);
+
     }
 
     @Override
-    public Void delete(Long customerId) {
-        return null;
+    @Transactional
+    public void delete(Long customerId) {
+       repository.deleteById(customerId);
     }
+
+
 }

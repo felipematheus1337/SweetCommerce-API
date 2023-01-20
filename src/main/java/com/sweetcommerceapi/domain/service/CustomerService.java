@@ -8,5 +8,5 @@ public interface CustomerService {
 
     Customer save(Customer customer);
 
-    Void delete(Long customerId);
+    void delete(Long customerId);
 }
