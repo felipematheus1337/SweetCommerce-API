@@ -1,6 +1,7 @@
 package com.sweetcommerceapi.api.mapper;
 
 
+import com.sweetcommerceapi.api.model.input.CustomerInput;
 import com.sweetcommerceapi.api.model.output.CustomerOutput;
 import com.sweetcommerceapi.domain.model.Customer;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,13 @@ public class CustomerMapper {
 
     public Customer toEntity(CustomerOutput customer) {
         return modelMapper.map(customer,Customer.class);
+    }
+
+    public CustomerInput entityToModel(Customer customer) {
+        return modelMapper.map(customer, CustomerInput.class);
+    }
+
+    public Customer inputModelToEntity(CustomerInput customerInput) {
+        return modelMapper.map(customerInput, Customer.class);
     }
 }
