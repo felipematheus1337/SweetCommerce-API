@@ -2,9 +2,7 @@ package com.sweetcommerceapi.domain.model;
 
 import com.sweetcommerceapi.domain.exception.BusinessException;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -15,6 +13,7 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@NoArgsConstructor
 public class Delivery {
 
     @EqualsAndHashCode.Include
@@ -41,6 +40,16 @@ public class Delivery {
     private OffsetDateTime orderDate;
 
     private OffsetDateTime dateFinished;
+
+    public Delivery(Long id, Customer customer, Recipient recipient, DeliveryStatus status, BigDecimal tax, OffsetDateTime orderDate) {
+        this.id = id;
+        this.customer = customer;
+        this.recipient = recipient;
+        this.status = status;
+        this.tax = tax;
+        this.orderDate = orderDate;
+    }
+
 
     public Occurrence addOccurrence(String description) {
         Occurrence occurrence = new Occurrence();

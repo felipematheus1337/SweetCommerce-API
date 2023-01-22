@@ -28,7 +28,6 @@ class CustomerServiceImplTest {
     private static final Long ID = 1L;
     private static final String NAME = "Felipe";
     private static final String EMAIL = "felipe@mail.com";
-    private static final String OTHER_EMAIL = "tofailure@mail.com";
 
     private static final String PHONE = "(21) 98665-7239";
 
@@ -44,7 +43,6 @@ class CustomerServiceImplTest {
 
     private Customer customer;
     private Optional<Customer> optionalCustomer;
-    private Optional<Customer> emptyOptional = Optional.of(new Customer());
 
 
 
