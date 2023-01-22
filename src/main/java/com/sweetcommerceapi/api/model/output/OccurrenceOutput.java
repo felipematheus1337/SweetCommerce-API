@@ -2,7 +2,7 @@ package com.sweetcommerceapi.api.model.output;
 
 import java.time.OffsetDateTime;
 
-public class OcurrenceOutput {
+public class OccurrenceOutput {
 
     private Long id;
 
